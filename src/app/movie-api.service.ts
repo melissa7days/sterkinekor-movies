@@ -1,33 +1,41 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import { Observable,of} from "rxjs";
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import {Movie} from './movies';
-import { Observable,of } from 'rxjs';
+import { map, filter, switchMap } from 'rxjs/operators'
+import { Token } from '@angular/compiler/src/ml_parser/lexer';
+import { IMDB } from './IMDB';
+import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
+
 @Injectable({
   providedIn: 'root'
 })
 export class MovieApiService {
-movies=[];
-private moviesUrl = 'https://www.omdbapi.com/?s=batman&apikey=fd23020c';
-  constructor(private http:HttpClient) { }
-  searchMovies(term:string):Observable<Movie[]>{
-    if(!term.trim())
-    {
-      return of([]);
+
+  movie:IMDB[];
+  result :any =[]
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+
+  };
+
+  private _siteURL = 'https://www.omdbapi.com/?t=';
+  private _param = '&apikey=';
+  private _key = '9ad5a19c';
+
+  constructor(
+    private http: HttpClient) { }
+
+
+ getMovieData(id): Observable<Movie> {
+
+      return this.http.get<Movie>('https://www.omdbapi.com/?i=' + id 
+        + this._param + this._key);
     }
-    return this.http.get<Movie[]>(`${this.moviesUrl}`);
-  }
-
-  FetchDefaultMovies(){
-    return fetch(this.moviesUrl)
-    .then(response=>response.json());
-  }
-  SearchMovie(){
-    return fetch(this.moviesUrl)
-          .then(Response=>Response.json())
-  }
-
-  SendMovies(){
-   return fetch('https://www.omdbapi.com/?s=batman&apikey=fd23020c')
-    .then(response=>response.json());
-   }
+    
+SeachAPIForMovieByTitle(value){
+  return this.http.get(`https://www.omdbapi.com/?s=${value}${this._param}${this._key}`);
 }
+
+}
+

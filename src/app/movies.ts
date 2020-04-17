@@ -1,12 +1,29 @@
-export interface Movie {
-    title: string;
-    year: string;
-    rated: string;
-    released: string;
-    runtime: string;
-    genre: string;
-    plot: string;
-    poster: string;
-    actors: string;
-    price: 90.00;
-  }
+import { Ratings } from './ratings';
+
+export interface Movie{
+    Title: string;
+    Year: string;
+    Rated: string;
+    Released: string;
+    Runtime: string;
+    Genre: string;
+    Director: string;
+    Writer: string;
+    Actors: string;
+    Plot: string;
+    Language: string;
+    Country: string;
+    Awards: string;
+    Poster: string;
+    Ratings: Ratings;
+    Metascore: string;
+    imdbRating: string;
+    imdbVotes: string;
+    imdbid: string;
+    Type: string;
+    DVD: string;
+    BoxOffice: string;
+    Production: string;
+    Website: string;
+    Response: string;
+    }

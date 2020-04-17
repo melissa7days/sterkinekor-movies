@@ -11,6 +11,9 @@ import { RouterModule } from '@angular/router';
 import { TopBarComponent } from './top-bar/top-bar.component';
 import { CarouselComponent } from './carousel/carousel.component';
 import { MovieComponent } from './movie/movie.component';
+import { CartComponent } from './cart/cart.component';
+import { MainComponent } from './main/main.component';
+import { MovieDetailsComponent } from './movie-details/movie-details.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +21,9 @@ import { MovieComponent } from './movie/movie.component';
     TopBarComponent,
     CarouselComponent,
     MovieComponent,
+    CartComponent,
+    MainComponent,
+    MovieDetailsComponent,
   ],
   imports: [
     BrowserModule,
