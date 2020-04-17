@@ -7,7 +7,7 @@ import { Observable,of } from 'rxjs';
 })
 export class MovieApiService {
 movies=[];
-private moviesUrl = 'https://www.omdbapi.com/?s=batman&apikey=fd23020c';
+private moviesUrl = 'http://www.omdbapi.com/?s=batman&apikey=fd23020c';
   constructor(private http:HttpClient) { }
   searchMovies(term:string):Observable<Movie[]>{
     if(!term.trim())
@@ -27,7 +27,7 @@ private moviesUrl = 'https://www.omdbapi.com/?s=batman&apikey=fd23020c';
   }
 
   SendMovies(){
-   return fetch('https://www.omdbapi.com/?s=batman&apikey=fd23020c')
+   return fetch('http://www.omdbapi.com/?s=batman&apikey=fd23020c')
     .then(response=>response.json());
    }
 }
