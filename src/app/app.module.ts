@@ -25,6 +25,7 @@ import { MovieComponent } from './movie/movie.component';
     Ng2SearchPipeModule,
     HttpClientModule,
     ReactiveFormsModule,
+    FormsModule,
     RouterModule.forRoot([
       { path: '', component: CarouselComponent},
       { path:'movies', component:MovieComponent},

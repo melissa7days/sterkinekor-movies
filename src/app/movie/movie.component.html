@@ -1,1 +1,38 @@
-<p>movie works!</p>
+
+<div class="container mt-4" style="width:900px ;max-width: 100%;">
+    <div class="row">
+        <div class="col-md-12">
+            <input #searchBox id="search-box" [(ngModel)]="movie" placeholder="Search for a movie" style="background-color: #212326 !important; color: gray !important; border: none !important; margin-top: 30px; height: 80px; border-radius: 3px; display: block;
+            margin-left: auto;
+            margin-right: auto; text-align:left; font-size: 2.0em; width: 100% !important; padding-left: 15px; font-family: Montserrat,sans-serif;"/>
+          
+        </div>
+    </div>
+    
+</div>
+<div class="container" style="margin: 0 auto; left: 0; right: 0;">
+    <div class="row">
+        <div *ngFor="let movie of movies |filter:movie">
+            <div class="col-md-8 ml-1">
+                <div class="columns" style="min-width: 100% !important;">
+                    <div class="card" style="width: 9rem;">
+                        <a (click)=toggleDisplay()>
+                            <img class="card-img" src="{{movie.Poster}}" alt="" width="200" height="180">
+                            <div class="card-body">
+                                <h3 class="card-title">
+                                    <h4 class="title">{{movie.Title}}</h4>
+                                    <h4 class="year">{{movie.Year}}</h4>
+                                    <div *ngIf="!isShow">
+                                        <a href="" class="btn btn-outline-secondary">Book Now</a>
+                                    </div>
+                                </h3>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
