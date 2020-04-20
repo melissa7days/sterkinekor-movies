@@ -14,6 +14,8 @@ import { MovieComponent } from './movie/movie.component';
 import { CartComponent } from './cart/cart.component';
 import { MainComponent } from './main/main.component';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,8 @@ import { MovieDetailsComponent } from './movie-details/movie-details.component';
     RouterModule.forRoot([
       { path: '', component: CarouselComponent},
       { path:'movies', component:MovieComponent},
-    ])
+    ]),
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],
   bootstrap: [AppComponent]
