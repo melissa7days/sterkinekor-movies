@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1587394310781,
+  "timestamp": 1587395069776,
   "index": "/sterkinekor-movies/index.html",
   "assetGroups": [
     {
@@ -50,7 +50,7 @@
     "/sterkinekor-movies/assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
     "/sterkinekor-movies/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
     "/sterkinekor-movies/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "/sterkinekor-movies/index.html": "3b9e0e2223067723d60d24ce9be0517b8883261d",
+    "/sterkinekor-movies/index.html": "b88d9e5eae1a06e10ba5070f0997eebeef6b353f",
     "/sterkinekor-movies/main-es2015.c2c28658c3fe00a17da5.js": "2f9b35f1e4af250cd4dace8d6aa90e9e8b0e9dfa",
     "/sterkinekor-movies/main-es5.c2c28658c3fe00a17da5.js": "e98dd80b7e2a818ce59eec39175399cb20cff3b2",
     "/sterkinekor-movies/manifest.webmanifest": "b471bf56bb3268b2d4983b8f905dc10ed5e2d9dd",
