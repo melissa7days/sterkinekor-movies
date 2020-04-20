@@ -1,0 +1,82 @@
+{
+  "configVersion": 1,
+  "timestamp": 1587380733838,
+  "index": "/sterkinekor-movies/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "urls": [
+        "/sterkinekor-movies/favicon.ico",
+        "/sterkinekor-movies/index.html",
+        "/sterkinekor-movies/main-es2015.c2c28658c3fe00a17da5.js",
+        "/sterkinekor-movies/main-es5.c2c28658c3fe00a17da5.js",
+        "/sterkinekor-movies/manifest.webmanifest",
+        "/sterkinekor-movies/polyfills-es2015.690002c25ea8557bb4b0.js",
+        "/sterkinekor-movies/polyfills-es5.9e286f6d9247438cbb02.js",
+        "/sterkinekor-movies/runtime-es2015.1eba213af0b233498d9d.js",
+        "/sterkinekor-movies/runtime-es5.1eba213af0b233498d9d.js",
+        "/sterkinekor-movies/scripts.39a64e0fef8d354a049b.js",
+        "/sterkinekor-movies/styles.397e2f2c241f6c7c75d2.css"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "urls": [
+        "/sterkinekor-movies/assets/icons/icon-128x128.png",
+        "/sterkinekor-movies/assets/icons/icon-144x144.png",
+        "/sterkinekor-movies/assets/icons/icon-152x152.png",
+        "/sterkinekor-movies/assets/icons/icon-192x192.png",
+        "/sterkinekor-movies/assets/icons/icon-384x384.png",
+        "/sterkinekor-movies/assets/icons/icon-512x512.png",
+        "/sterkinekor-movies/assets/icons/icon-72x72.png",
+        "/sterkinekor-movies/assets/icons/icon-96x96.png"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [],
+  "hashTable": {
+    "/sterkinekor-movies/assets/icons/icon-128x128.png": "dae3b6ed49bdaf4327b92531d4b5b4a5d30c7532",
+    "/sterkinekor-movies/assets/icons/icon-144x144.png": "b0bd89982e08f9bd2b642928f5391915b74799a7",
+    "/sterkinekor-movies/assets/icons/icon-152x152.png": "7479a9477815dfd9668d60f8b3b2fba709b91310",
+    "/sterkinekor-movies/assets/icons/icon-192x192.png": "1abd80d431a237a853ce38147d8c63752f10933b",
+    "/sterkinekor-movies/assets/icons/icon-384x384.png": "329749cd6393768d3131ed6304c136b1ca05f2fd",
+    "/sterkinekor-movies/assets/icons/icon-512x512.png": "559d9c4318b45a1f2b10596bbb4c960fe521dbcc",
+    "/sterkinekor-movies/assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
+    "/sterkinekor-movies/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
+    "/sterkinekor-movies/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
+    "/sterkinekor-movies/index.html": "b88d9e5eae1a06e10ba5070f0997eebeef6b353f",
+    "/sterkinekor-movies/main-es2015.c2c28658c3fe00a17da5.js": "2f9b35f1e4af250cd4dace8d6aa90e9e8b0e9dfa",
+    "/sterkinekor-movies/main-es5.c2c28658c3fe00a17da5.js": "e98dd80b7e2a818ce59eec39175399cb20cff3b2",
+    "/sterkinekor-movies/manifest.webmanifest": "b471bf56bb3268b2d4983b8f905dc10ed5e2d9dd",
+    "/sterkinekor-movies/polyfills-es2015.690002c25ea8557bb4b0.js": "72ad4ccc0a3916ae4598199447cdeadd6d380570",
+    "/sterkinekor-movies/polyfills-es5.9e286f6d9247438cbb02.js": "e51a1de4f016cd689dbdbef51043dec9518c4111",
+    "/sterkinekor-movies/runtime-es2015.1eba213af0b233498d9d.js": "a9aafcf49f49145093fc831efd9b8e2f6c71bb9c",
+    "/sterkinekor-movies/runtime-es5.1eba213af0b233498d9d.js": "a9aafcf49f49145093fc831efd9b8e2f6c71bb9c",
+    "/sterkinekor-movies/scripts.39a64e0fef8d354a049b.js": "816c529433e19f1163720b1e71f4996714a85705",
+    "/sterkinekor-movies/styles.397e2f2c241f6c7c75d2.css": "459c0cf3a97eb66ea2e075299619f7f974176c2b"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ]
+}
