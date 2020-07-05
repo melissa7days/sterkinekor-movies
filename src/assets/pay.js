@@ -1,4 +1,9 @@
-const baseRequest = {
+  count = 0;
+  if(count = 0){
+    document.getElementById("1").style.display = "none";
+  }
+
+  const baseRequest = {
     apiVersion: 2,
     apiVersionMinor: 0
   };
@@ -67,13 +72,24 @@ const baseRequest = {
     }
     return paymentsClient;
   }
+  var paymentSuccessMessage = "Successful Payment";
   
   function onPaymentAuthorized(paymentData) {
     return new Promise(function(resolve, reject){
       processPayment(paymentData)
         .then(function() {
           resolve({transactionState: 'SUCCESS'});
-          document.getElementById("demo").innerHTML = "Success";
+          fetch('http://localhost:56236/api/payment',{
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Accept': 'application/json'
+            },            
+            body: JSON.stringify({paymentMessage:paymentSuccessMessage, id:1,cartid:24255})
+          }).then((res) => res.json())
+          .then((data) => console.log(data))
+          .catch((err) => console.log(err))
+          document.getElementById("demo").innerHTML = paymentSuccessMessage;
         })
         .catch(function() {
           resolve({

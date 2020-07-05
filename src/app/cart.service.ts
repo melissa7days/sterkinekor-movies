@@ -14,28 +14,7 @@ export class CartService {
   value:Cart;
   checkout:Checkout;
   constructor() { }
-  postCheckout(cart:any,movie:any,quantity:number,price:number){
-    var _totalCost = price * quantity;
-    var _quantity = Number(quantity);
-    var _flag =false;
-    this.total += price*quantity;
 
-    for (let index = 0; index < this.items.length; index++) {
-      if( this.items[index].id == movie.imdbID)
-      {
-       var _num =Number(this.items[index].quantity); 
-       this.items[index].quantity = Number(_quantity+_num);
-       this.items[index].totalCost += _totalCost;
-       _flag = true;
-       break;
-      }
-    }
-
-  if(!_flag)
-  {
-    this.setCart(movie,quantity,_totalCost,50);
-  }
-  }
   addToCart(movie:any,quantity:number,price:number){ 
 
     var _totalCost = price * quantity;

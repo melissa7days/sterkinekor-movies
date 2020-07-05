@@ -4,7 +4,7 @@
 body{
     background-color: #0b0d0f !important;
 }
-app-top-bar .navbar{
+.navbar{
     background-color: #0b0d0f !important;
     /* font-family: Montserrat,sans-serif; */
     font-size: 16px;
@@ -13,15 +13,12 @@ app-top-bar .navbar{
     font-family: 'Oswald', sans-serif;
 
 }
-app-top-bar a{
+a{
     color: #96989a !important;
 
 }
-app-top-bar button{
-    background-color: black !important;
-    border: none !important;
-}
-app-top-bar nav{
+
+nav{
     position: fixed;
 }
 app-carousel .slider{
@@ -29,10 +26,10 @@ app-carousel .slider{
     display: flex;
 }
 @media (max-width: 1000px){
-    app-top-bar .btn{
+    .btn{
         display: none;
     }
-    app-top-bar .navbar-brand{
+    .navbar-brand{
         margin: 0;
         margin-top: 17px;
         position: absolute;
@@ -41,11 +38,11 @@ app-carousel .slider{
         margin-right: -50%;
         transform: translate(-50%, -50%);
     }
-    app-top-bar .navbar-toggler{
+    .navbar-toggler{
         background-color: #0b0d0f !important;
         color: #fff !important;
     }
-    app-top-bar .navbar-toggler-icon{
+    .navbar-toggler-icon{
         color: #fff !important;
     }
 }
