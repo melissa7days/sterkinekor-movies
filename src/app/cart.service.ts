@@ -3,6 +3,7 @@ import { Movie } from './movies';
 import {CartComponent} from '../app/cart/cart.component';
 import {Cart} from '../app/Cart';
 import { Checkout } from 'src/checkout';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,10 @@ export class CartService {
   total = 0;
   value:Cart;
   checkout:Checkout;
-  constructor() { }
+  
+  private cartUrl = "http://localhost:56236/api/cart";
+  private itemUrl = "http://localhost:56236/api/item";
+  constructor(private httpClient: HttpClient) { }
 
   addToCart(movie:any,quantity:number,price:number){ 
 
@@ -63,5 +67,11 @@ export class CartService {
   removeItem(movie:any){
     this.items.splice(this.items.lastIndexOf(movie),1);
     this.total = this.total - movie.totalCost;
+  }
+  public getCartRequest(){
+    return this.httpClient.get(this.cartUrl);
+  }
+  public getItemRequest(){
+    return this.httpClient.get(this.itemUrl);
   }
 }

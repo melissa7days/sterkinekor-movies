@@ -73,6 +73,7 @@
     return paymentsClient;
   }
   var paymentSuccessMessage = "Successful Payment";
+  var PaymentId = 0;
   
   function onPaymentAuthorized(paymentData) {
     return new Promise(function(resolve, reject){
@@ -85,11 +86,20 @@
               'Content-Type': 'application/json',
               'Accept': 'application/json'
             },            
-            body: JSON.stringify({paymentMessage:paymentSuccessMessage, id:1,cartid:24255})
+            body: JSON.stringify({paymentMessage:paymentSuccessMessage, id:itemId2,cartid:cartId2})
           }).then((res) => res.json())
           .then((data) => console.log(data))
           .catch((err) => console.log(err))
-          document.getElementById("demo").innerHTML = paymentSuccessMessage;
+
+          fetch(`http://localhost:56236/api/payment/getpaymentdetails?cartid=${cartId2}&itemid=${itemId2}`)
+          .then(result => result.json())
+          .then(users => {
+              users.forEach(function(user){
+                console.log("Payment ID : ",user.paymentId);
+                PaymentId = user.paymentId;
+              })
+          }); 
+          document.getElementById("demo").innerHTML = PaymentId;
         })
         .catch(function() {
           resolve({
@@ -124,23 +134,54 @@
     document.getElementById('container').appendChild(button);
   }
   
-  var total = 0;
+  var total1 = 0;
+  var total2 = 0;
+  var cartId1 = 0;
+  var cartId2 = 0;
+ fetch('http://localhost:56236/api/cart')
+  .then(result => result.json())
+  .then(user => {
+      user.forEach(function(users){
+        total1 = users.finalTotal;
+        cartId1 = users.cartId;
+      })
+  }); 
+  fetch('http://localhost:56236/api/cart')
+  .then(result => result.json())
+  .then(users => {
+      console.log(users);
+      total2 = users[users.length - 1].finalTotal;
+/*       users.forEach(function(user){
+        
+        total2 = user.finalTotal;
+        console.log(total2)
+        cartId2 = user.cartId;
+      }) */
+  }); 
+  var itemId1 = 0;
+  var itemId2 = 0;
+ fetch('http://localhost:56236/api/item')
+  .then(result => result.json())
+  .then(users => {
+      users.forEach(function(user){
+        itemId1 = user.id;
+      })
+  }); 
   fetch('http://localhost:56236/api/item')
   .then(result => result.json())
   .then(users => {
       users.forEach(function(user){
-        console.log(user.title,user.quantity, user.itemCost, user.totalCost);
-        total = user.totalCost;
-        console.log(total);
+        itemId2 = user.id;
       })
-  });
+  }); 
+
 
   function getGoogleTransactionInfo() {
     return {
       countryCode: 'ZA',
       currencyCode: "ZAR",
       totalPriceStatus: "FINAL",
-      totalPrice: total.toString(),
+      totalPrice: total2.toString(),
       totalPriceLabel: "Total"
     };
   }
@@ -158,9 +199,7 @@
   function processPayment(paymentData) {
     return new Promise(function(resolve, reject) {
       setTimeout(function() {
-        // @todo pass payment token to your gateway to process payment
         paymentToken = paymentData.paymentMethodData.tokenizationData.token;
-  
               if (attempts++ % 2 == 0) {
             reject(new Error('Every other attempt fails, next one should succeed'));      
         } else {

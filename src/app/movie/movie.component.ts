@@ -12,6 +12,7 @@ import { ActivatedRoute } from '@angular/router';
 import { catchError, map, tap } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Cart } from '../Cart';
+import { CartLogic } from '../cartLogic';
 @Component({
   selector: 'app-movie',
   templateUrl: './movie.component.html',
@@ -56,8 +57,10 @@ export class MovieComponent implements OnInit {
   count =0;
   _currentSearch = undefined;
   d = 0;
-
+  id = 0;
   quantity =0;
+  cart = [];
+  item = [];
   constructor(private movieService:MovieApiService,private cartService:CartService, private route: ActivatedRoute, private http: HttpClient) {} 
 
       ngAfterContentChecked()
@@ -81,7 +84,6 @@ export class MovieComponent implements OnInit {
     const title2 = this.route.snapshot.paramMap.get('imdbID');;
     this.movieService.getMovieData(title2).subscribe(movieData =>{
       this.movie2 = movieData;
-      console.log('getMovieDetails:' + this.movie2.Plot);
     },
     error => this.errorMessage = <any>error);
     return false;
@@ -104,29 +106,26 @@ export class MovieComponent implements OnInit {
             this.multiple!=undefined ? this.count = this.multiple.length:this.count =0;
        });
   }
-  ngOnDestroy(): void {
-    this.d = Number.parseInt((<HTMLInputElement>document.getElementById("numberTickets")).value);
-    console.log(this.d);
-    console.log(document.getElementById("numberTickets"));
-    var total = this.d * 50;
-    const body = {title: this.selectedMovie.Title, quantity: this.d, itemCost: 50, totalCost: total}
-    this.http.post<Cart>('http://localhost:56236/api/item', body).subscribe(data =>{
-      this.quantity = data.id;
-    })
-  }
 
   addToCart(movie:any,numberOfTickets:number):void{
-    console.log(numberOfTickets);
-    console.log(movie.Title);
     this.cartService.addToCart(movie,numberOfTickets,50);
     this.d = Number.parseInt((<HTMLInputElement>document.getElementById("numberTickets")).value);
-    console.log(this.d);
-    console.log(document.getElementById("numberTickets"));
     var total = this.d * 50;
     const body = {title: this.selectedMovie.Title, quantity: this.d, itemCost: 50, totalCost: total}
     this.http.post<Cart>('http://localhost:56236/api/item', body).subscribe(data =>{
       this.quantity = data.id;
     })
+    this.cartService.getItemRequest().subscribe((data: any[])=>{
+      console.log(data);
+      this.item = data;
+    }) 
+    this.http.post<CartLogic>('http://localhost:56236/api/cart', {finalTotal: this.cartService.total}).subscribe(data =>{
+      this.id = data.cartId;
+    })
+    this.cartService.getCartRequest().subscribe((data: any[])=>{
+      console.log(data);
+      this.cart = data;
+    })  
   }
 
   onSelect(hero: MovieDescription): void { 

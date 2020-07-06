@@ -3,6 +3,8 @@ import {CartService} from '../cart.service';
 import {MovieDescription} from '../movie'
 import { MovieApiService } from '../movie-api.service';
 import { getInterpolationArgsLength } from '@angular/compiler/src/render3/view/util';
+import { HttpClient } from '@angular/common/http';
+import { CartLogic } from '../cartLogic';
 
 @Component({
   selector: 'app-cart',
@@ -14,12 +16,14 @@ export class CartComponent implements OnInit {
   item=[];
   total = 0;
   count=0;
-  constructor(private cartService:CartService) { }
+  id=0;
+  constructor(private cartService:CartService, private http: HttpClient) { }
 
   ngOnInit(): void {
     this.item = this.cartService.getItems();
     this.total = this.cartService.total;
-     this.numberOfItems();
+    this.numberOfItems();
+
   }
 
   ngAfterContentChecked()
